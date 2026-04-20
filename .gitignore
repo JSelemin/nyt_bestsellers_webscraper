@@ -1,0 +1,8 @@
+venv/
+data/
+logs/
+.DS_Store
+__pycache__/
+*.db
+todo.txt
+nyt_bestseller_spec.md
