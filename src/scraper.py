@@ -4,22 +4,6 @@ import hashlib
 from datetime import datetime, timedelta
 from bs4 import BeautifulSoup
 
-current = datetime.now()
-day_of_week = current.weekday()
-
-days_ahead = 6 - day_of_week
-next_sunday = current + timedelta(days=days_ahead)
-
-print(current.strftime("%Y/%m/%d"))
-print(next_sunday.strftime("%Y/%m/%d"))
-
-list_of_weeks = []
-previous_sunday = next_sunday
-
-for i in range(5):
-    previous_sunday = previous_sunday - timedelta(weeks=1)
-    list_of_weeks.append(previous_sunday.strftime("%Y/%m/%d"))
-
 def generate_book_hash(title, author):
 
     input_string = f"{title.lower().strip()}|{author.lower().strip()}"
@@ -75,16 +59,37 @@ def get_books_ranks(sunday):
     return books_data, ranks_data
 
     
+def scrape_and_collect():
 
-books_df = pd.DataFrame()
-ranks_df = pd.DataFrame()
+    current = datetime.now()
+    day_of_week = current.weekday()
 
-for i in list_of_weeks:
-    books, ranks = get_books_ranks(i)
-    new_books_df = pd.DataFrame(books)
-    new_ranks_df = pd.DataFrame(ranks)
-    
-    books_df = pd.concat([books_df, new_books_df], axis=0)
-    ranks_df = pd.concat([ranks_df, new_ranks_df], axis=0)
+    days_ahead = 6 - day_of_week
+    next_sunday = current + timedelta(days=days_ahead)
 
-print(ranks_df.head(30))
+    print(current.strftime("%Y/%m/%d"))
+    print(next_sunday.strftime("%Y/%m/%d"))
+
+    list_of_weeks = []
+    previous_sunday = next_sunday
+
+    for i in range(5):
+        previous_sunday = previous_sunday - timedelta(weeks=1)
+        list_of_weeks.append(previous_sunday.strftime("%Y/%m/%d"))
+
+    books_df = pd.DataFrame()
+    ranks_df = pd.DataFrame()
+
+    for i in list_of_weeks:
+        books, ranks = get_books_ranks(i)
+        new_books_df = pd.DataFrame(books)
+        new_ranks_df = pd.DataFrame(ranks)
+        
+        books_df = pd.concat([books_df, new_books_df], axis=0)
+        ranks_df = pd.concat([ranks_df, new_ranks_df], axis=0)
+
+    books_df.drop_duplicates(subset=["hash_id"], inplace=True)
+    books_df.reset_index(drop=True, inplace=True)
+    ranks_df.reset_index(drop=True, inplace=True)
+
+    return books_df, ranks_df
