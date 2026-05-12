@@ -86,8 +86,12 @@ Esto ejecuta scraper → transform → loader en secuencia. Esperar aproximadame
 ## Hallazgos
  
 **La longevidad requiere un rendimiento sostenido.** Los libros con más de 40 semanas en la lista promediaron consistentemente entre el ranking 4 y el 9. Ningún libro de larga permanencia tuvo un ranking promedio peor que 10, lo que sugiere que los libros que caen al fondo de la lista tienden a salir rápidamente en lugar de quedarse.
+
+![image alt](https://github.com/JSelemin/nyt_bestsellers_webscraper/blob/main/assets/Report%20Screenshot%201.png)
  
 **Emergieron dos estrategias de dominancia distintas.** *The Housemaid* (Freida McFadden) entró en el ranking 14 en noviembre de 2023 y se convirtió en el título de mayor permanencia del dataset: 124 semanas con un ranking promedio de 9, sostenido por una escalada gradual más que por un impacto inmediato. Danielle Steel, en cambio, colocó aproximadamente 20 títulos distintos en la lista durante el mismo período, dominando por volumen en lugar de por longevidad individual de cada libro.
+
+![image alt](https://github.com/JSelemin/nyt_bestsellers_webscraper/blob/main/assets/Report%20Screenshot%202.png)
  
 ## Limitaciones
  
