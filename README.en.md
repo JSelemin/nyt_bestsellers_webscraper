@@ -86,9 +86,13 @@ This runs scraper → transform → loader in sequence. Expect roughly 10 minute
 ## Findings
  
 **Longevity requires sustained performance.** Books with 40+ weeks on the list consistently averaged between rank 4 and rank 9. No long-running book had an average rank worse than 10, suggesting that books which fall to the bottom of the list tend to exit quickly rather than linger.
+
+![image alt](https://github.com/JSelemin/nyt_bestsellers_webscraper/blob/main/assets/Report%20Screenshot%201.png)
  
 **Two distinct dominance strategies emerged.** *The Housemaid* (Freida McFadden) entered at rank 14 in November 2023 and became the longest-running title in the dataset — 124 weeks with an average rank of 9, sustained by gradual climb rather than immediate impact. Danielle Steel, by contrast, placed ~20 distinct titles on the list over the same period, dominating through volume rather than individual book longevity.
- 
+
+![image alt](https://github.com/JSelemin/nyt_bestsellers_webscraper/blob/main/assets/Report%20Screenshot%202.png)
+
 ## Limitations
  
 - **CSS selector fragility**: the scraper targets auto-generated class names (e.g. `css-1u6k25n`) which will break if NYT updates their frontend. A more robust approach would use structural selectors (e.g. `article:nth-child`) or monitor for selector changes.
